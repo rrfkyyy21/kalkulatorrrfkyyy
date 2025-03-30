@@ -1,0 +1,171 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: #000;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.calculator-container {
+    position: relative;
+    perspective: 1000px;
+}
+
+.calculator {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(30px);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.4),
+                0 0 30px rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transform-style: preserve-3d;
+    transform: rotateX(10deg) rotateY(10deg);
+    transition: all 0.3s ease;
+}
+
+.calculator:hover {
+    transform: rotateX(0deg) rotateY(0deg);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(255, 255, 255, 0.1);
+}
+
+.display {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: right;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    word-wrap: break-word;
+    word-break: break-all;
+    box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.previous-operand {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.5rem;
+    min-height: 30px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.current-operand {
+    color: white;
+    font-size: 2.5rem;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+button {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    transition: all 0.3s ease;
+    transform-style: preserve-3d;
+    transform: translateZ(0);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateZ(20px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+    transform: translateZ(0);
+}
+
+.span-two {
+    grid-column: span 2;
+}
+
+.operator {
+    background: rgba(255, 165, 0, 0.15);
+    box-shadow: 0 0 15px rgba(255, 165, 0, 0.2);
+}
+
+.operator:hover {
+    background: rgba(255, 165, 0, 0.25);
+    box-shadow: 0 0 20px rgba(255, 165, 0, 0.3);
+}
+
+.equals {
+    background: rgba(255, 165, 0, 0.3);
+    box-shadow: 0 0 20px rgba(255, 165, 0, 0.4);
+}
+
+.equals:hover {
+    background: rgba(255, 165, 0, 0.4);
+    box-shadow: 0 0 25px rgba(255, 165, 0, 0.5);
+}
+
+.clear, .delete {
+    background: rgba(255, 0, 0, 0.15);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
+}
+
+.clear:hover, .delete:hover {
+    background: rgba(255, 0, 0, 0.25);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px) rotateX(10deg) rotateY(10deg);
+    }
+    50% {
+        transform: translateY(-20px) rotateX(5deg) rotateY(5deg);
+    }
+    100% {
+        transform: translateY(0px) rotateX(10deg) rotateY(10deg);
+    }
+}
+
+.calculator-container {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.05);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+    100% {
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.05);
+    }
+}
+
+.calculator {
+    animation: glow 3s ease-in-out infinite;
+} 
